@@ -4,7 +4,6 @@ public class Person implements Comparable<Person>
 	public class Identity {
 		String pronouns;
 		String background;
-		Identity story;
 
 		public Identity(String pronouns, String background) {
 			this.pronouns = pronouns;
@@ -18,6 +17,10 @@ public class Person implements Comparable<Person>
 		public String toString() {
 			return this.pronouns + this.background;
 		}
+
+		public boolean equals(Identity otherIdentity) {
+			return true;
+		} 
 
 	}
 
