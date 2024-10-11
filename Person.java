@@ -4,6 +4,7 @@ public class Person implements Comparable<Person>
 	public class Identity {
 		String pronouns;
 		String background;
+		
 
 		public Identity(String pronouns, String background) {
 			this.pronouns = pronouns;
@@ -11,35 +12,44 @@ public class Person implements Comparable<Person>
 		}
 
 		public Identity() {
-
+			this.pronouns = "Xe, Xim";
+			this.background = "Unknown";
 		}
 		
 		public String toString() {
-			return this.pronouns + this.background;
+			return "Pronouns: " + this.pronouns + " Background: " + this.background;
 		}
 
-		public boolean equals(Identity otherIdentity) {
-			return true;
+		public boolean equals(Identity other) {
+			if(other == null || (!(other instanceof Identity))) {
+				return false;
+			}
+			
+			Identity otherIdentity = (Identity) other;
+			return this.pronouns.equals(otherIdentity.pronouns) && this.background.equals(otherIdentity.background);
+			
 		} 
 
 	}
 
 	// CONSTANT VARIABLES
 	public static final String DEFAULT_NAME = "Jamie Doe";
-	public static final String DEFAULT_STORY =  "Unknown";
+	public static final String DEFAULT_PRONOUNS =  "Xe, Xim";
+	public static final Identity DEFAULT_STORY =  null;
 	public static final int DEFAULT_PRIVILEGE = 100;
 
 	// INSTANCE VARIABLES
-	private String name, story;
+	private String name;
+	private Identity story;
 	private int privilege;
 
 	// CONSTRUCTORS	
-	public Person(String name, String story, int privilege) {
+	public Person(String name, String defaultPronouns, Identity story, int privilege) {
 		this.setAll(name, story, privilege);
 	}
 		
 	public Person() {
-		this(DEFAULT_NAME, DEFAULT_STORY, DEFAULT_PRIVILEGE);
+		this(DEFAULT_NAME, DEFAULT_PRONOUNS, DEFAULT_STORY, DEFAULT_PRIVILEGE);
 	}
 	
 	public Person(Person original) {
@@ -55,7 +65,7 @@ public class Person implements Comparable<Person>
 		this.name = name;
 	}
 
-	public void setStory(String story) {
+	public void setStory(Identity story) {
 		this.story = story;
 	}
 
@@ -63,7 +73,7 @@ public class Person implements Comparable<Person>
 		this.privilege = privilege;
 	}
 
-	public void setAll(String name, String story, int privilege) {
+	public void setAll(String name, Identity story, int privilege) {
 		this.setPrivilege(privilege);
 		this.setName(name);
 		this.setStory(story);
@@ -74,7 +84,7 @@ public class Person implements Comparable<Person>
 		return this.name;
 	}
 		
-	public String getStory() {
+	public Identity getStory() {
 		return this.story;
 	}
 

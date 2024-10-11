@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+
 public class Main
 {
 	public static final String[] STATEMENTS = {
@@ -108,7 +109,8 @@ public class Main
 	/***** TODO: (Part 2) upgrade method to ask user for pronouns and background info *****/
 	public static void fillInfo(Person person){
 		//sets default privilege prior to questionnaire to 100
-		String name, story;
+		String name;
+		Person.Identity story;
 		
 		System.out.println("What is your name? ");
 		name = keyboard.nextLine();
